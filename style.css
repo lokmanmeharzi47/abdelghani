@@ -1,0 +1,1315 @@
+/* ==========================================================================
+   SOVEREIGN EXECUTIVE PORTAL — M. ABDELGHANI BABA BEN YAHMED
+   Design System: Sovereign Emerald & State Gold (الزمرد السيادي والذهب السلطاني)
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --bg-deep: #030A07;
+  --bg-deep-translucent: rgba(3, 10, 7, 0.92);
+  --bg-surface: rgba(8, 28, 20, 0.78);
+  --bg-card: linear-gradient(180deg, rgba(14, 38, 27, 0.90) 0%, rgba(5, 14, 10, 0.96) 100%);
+  --bg-card-hover: linear-gradient(180deg, rgba(18, 48, 35, 0.95) 0%, rgba(7, 20, 14, 0.98) 100%);
+  
+  --gold-primary: #D4AF37;
+  --gold-bright: #F7E5A9;
+  --gold-light: #FFF6D6;
+  --gold-muted: #C5A059;
+  --gold-dark: #AA8010;
+  --gold-glow: rgba(212, 175, 55, 0.28);
+  --gold-glow-intense: rgba(247, 229, 169, 0.45);
+
+  --crimson-accent: #B81D24;
+  --crimson-glow: rgba(184, 29, 36, 0.35);
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #D1DCD6;
+  --text-muted: #95A89F;
+
+  --edge-gold: 1px solid rgba(212, 175, 55, 0.38);
+  --edge-gold-bright: 1px solid rgba(247, 229, 169, 0.65);
+  --edge-subtle: 1px solid rgba(212, 175, 55, 0.16);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 16px 40px -10px rgba(0, 0, 0, 0.75), 0 0 20px rgba(10, 40, 26, 0.4);
+  --shadow-gold: 0 8px 30px rgba(212, 175, 55, 0.22);
+  --shadow-elevation: 0 24px 60px rgba(0, 0, 0, 0.88);
+
+  --font-arabic-title: 'Amiri', 'Cairo', serif;
+  --font-arabic-sans: 'Cairo', 'Tajawal', sans-serif;
+  --font-arabic-body: 'Tajawal', 'Cairo', sans-serif;
+  --font-latin: 'Montserrat', sans-serif;
+  --font-latin-title: 'Cinzel', 'Montserrat', serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Reset & Base Setup
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-arabic-body);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* LTR Specific Typography adjustments */
+html[dir="ltr"] body {
+  font-family: var(--font-latin);
+}
+
+/* Ambient Sovereign Emerald Mesh */
+.ambient-glow-mesh {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.45;
+  will-change: transform;
+}
+
+.glow-top {
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(14, 55, 36, 0.75) 0%, rgba(3, 10, 7, 0) 70%);
+}
+
+.glow-middle {
+  top: 40%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(3, 10, 7, 0) 70%);
+}
+
+.glow-bottom {
+  bottom: -10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(10, 42, 28, 0.6) 0%, rgba(3, 10, 7, 0) 70%);
+}
+
+/* Page Layout Container */
+.page-container {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding: 24px 28px 64px;
+    gap: 36px;
+  }
+}
+
+/* ==========================================================================
+   TOP BAR: Language Selector & Republic Seal
+   ========================================================================== */
+.top-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 18px;
+  background: var(--bg-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--edge-gold);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.nav-republic-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-star-crescent {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.nav-republic-text {
+  font-family: var(--font-arabic-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+  letter-spacing: 0.02em;
+}
+
+html[dir="ltr"] .nav-republic-text {
+  font-family: var(--font-latin);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Language Switcher */
+.lang-switch-group {
+  display: flex;
+  align-items: center;
+  background: rgba(3, 10, 7, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-latin);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.lang-btn:hover {
+  color: var(--gold-bright);
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-primary) 100%);
+  color: #030A07;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.35);
+}
+
+/* ==========================================================================
+   INSTITUTIONAL MASTHEAD
+   ========================================================================== */
+.institutional-masthead {
+  text-align: center;
+  background: var(--bg-surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: var(--edge-gold);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px 20px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.institutional-masthead::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-bright), var(--gold-primary), transparent);
+}
+
+.official-emblem-wrap {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 12px;
+  filter: drop-shadow(0 4px 10px rgba(212, 175, 55, 0.3));
+}
+
+.official-crest {
+  width: 100%;
+  height: 100%;
+}
+
+.republic-sub {
+  font-family: var(--font-latin-title);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-muted);
+  margin-bottom: 6px;
+}
+
+.org-title {
+  font-family: var(--font-arabic-sans);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+html[dir="ltr"] .org-title {
+  font-family: var(--font-latin);
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.authority-title {
+  font-family: var(--font-arabic-sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--gold-bright);
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+html[dir="ltr"] .authority-title {
+  font-family: var(--font-latin);
+  font-size: 0.88rem;
+}
+
+.pillars-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(3, 10, 7, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+}
+
+.pillar-tag {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.pillar-tag.highlight {
+  color: var(--gold-bright);
+  font-weight: 700;
+}
+
+.pillar-dot {
+  color: var(--gold-primary);
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   HERO PORTRAIT & EXACT GOLD BOX CALIBRATION (SECTION 2 OF PROMPT)
+   ========================================================================== */
+.hero-executive-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* 1. Exact wrapper container with container queries */
+.hero-portrait-frame {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+  aspect-ratio: 2 / 3;
+  container-type: inline-size;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 175, 55, 0.2);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+}
+
+/* Static image without breathing animation so the text remains locked */
+.hero-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none !important;
+}
+
+/* 2. Overlaid text placed strictly inside the black & gold rectangular plate */
+.picture-gold-box-content {
+  position: absolute;
+  top: 72.0%;
+  bottom: 10.8%;
+  left: 6.5%;
+  right: 6.5%;
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.2cqw 2.2cqw;
+  pointer-events: none;
+}
+
+/* Arabic Name */
+.person-name-ar {
+  margin: 0;
+  font-family: 'Amiri', 'Cairo', serif;
+  font-size: 5.2cqw;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+  background: linear-gradient(180deg, #FFF6D6 0%, #D4AF37 55%, #AA8010 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9));
+}
+
+/* Latin Name */
+.person-name-en {
+  margin-top: 0.4cqw;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.1cqw;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #F5E6A3;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Subtle Gold Divider */
+.gold-divider {
+  width: 40%;
+  height: 1px;
+  margin: 0.9cqw auto;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+}
+
+/* Official Role */
+.person-title {
+  margin: 0;
+  font-family: 'Tajawal', 'Cairo', sans-serif;
+  font-size: 2.85cqw;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #FFFFFF;
+}
+
+/* Specialty & Qualification */
+.person-subtitle {
+  margin: 0.45cqw 0 0;
+  font-family: 'Tajawal', 'Montserrat', sans-serif;
+  font-size: 2.25cqw;
+  font-weight: 500;
+  color: #E6C762;
+}
+
+/* Rank Badge Under Portrait */
+.executive-rank-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  background: rgba(8, 28, 20, 0.85);
+  border: 1px solid var(--gold-primary);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.pulse-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2ECC71;
+  box-shadow: 0 0 10px #2ECC71;
+  animation: pulse-ring 2s infinite ease-in-out;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(46, 204, 113, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+}
+
+.badge-text {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   TIER 1: PRIMARY EXECUTIVE ACTIONS (STRICTLY NO CARD MODAL & NO QR)
+   ========================================================================== */
+.primary-actions-section {
+  width: 100%;
+}
+
+.action-card-gold {
+  background: var(--bg-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--edge-gold);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Primary Executive Gold Button */
+.btn-executive-gold {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  background: linear-gradient(135deg, #FFF6D6 0%, #E5BE48 30%, #D4AF37 70%, #AA8010 100%);
+  color: #030A07;
+  border: 1px solid #FFE494;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.btn-executive-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(212, 175, 55, 0.5);
+}
+
+.btn-executive-gold:active {
+  transform: translateY(0);
+}
+
+.btn-gold-sheen {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-25deg);
+  animation: goldSheen 4.5s infinite ease-in-out;
+}
+
+@keyframes goldSheen {
+  0% { left: -100%; }
+  25% { left: 200%; }
+  100% { left: 200%; }
+}
+
+.btn-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.btn-text-group {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  flex-grow: 1;
+  padding: 0 14px;
+}
+
+html[dir="ltr"] .btn-text-group {
+  text-align: left;
+}
+
+.btn-main-label {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.btn-sub-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(3, 10, 7, 0.85);
+  margin-top: 2px;
+}
+
+.btn-arrow {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+html[dir="rtl"] .btn-arrow {
+  transform: rotate(180deg);
+}
+
+.btn-executive-gold:hover .btn-arrow {
+  transform: translateX(-4px);
+}
+
+html[dir="ltr"] .btn-executive-gold:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Secondary Actions Bar */
+.secondary-actions-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn-secondary-glass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(8, 28, 20, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary-glass svg {
+  width: 18px;
+  height: 18px;
+  color: var(--gold-primary);
+  flex-shrink: 0;
+}
+
+.btn-secondary-glass:hover {
+  background: rgba(14, 38, 27, 0.85);
+  border-color: var(--gold-primary);
+  color: var(--gold-bright);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   TIER 2: STRATEGIC ROLES & EXPERTISE
+   ========================================================================== */
+.section-title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.title-accent-line {
+  height: 1px;
+  flex-grow: 1;
+  max-width: 60px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+}
+
+.section-title {
+  font-family: var(--font-arabic-sans);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--gold-bright);
+}
+
+html[dir="ltr"] .section-title {
+  font-family: var(--font-latin);
+  font-size: 1.05rem;
+}
+
+.competencies-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.competency-card {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: var(--edge-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-smooth);
+}
+
+.competency-card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Featured card for Food Industry Expertise */
+.featured-gold-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(20, 50, 35, 0.95) 0%, rgba(8, 22, 16, 0.98) 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.6);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), 0 0 25px rgba(212, 175, 55, 0.15);
+}
+
+.badge-featured {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold-primary));
+  color: #030A07;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+}
+
+.card-icon-container {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(8, 28, 20, 0.9);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-icon-container svg {
+  width: 24px;
+  height: 24px;
+}
+
+.highlight-icon {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--gold-bright);
+}
+
+.card-body {
+  flex-grow: 1;
+}
+
+.card-heading {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.featured-gold-card .card-heading {
+  color: var(--gold-bright);
+}
+
+.card-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   ACCREDITATIONS & LEGAL STATUS SECTION (DIRECTLY IN PAGE)
+   ========================================================================== */
+.legal-card-glass {
+  background: var(--bg-card);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-elevation);
+  position: relative;
+  overflow: hidden;
+}
+
+.legal-card-glass::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold-primary), transparent);
+}
+
+html[dir="ltr"] .legal-card-glass::after {
+  right: auto;
+  left: 0;
+}
+
+.legal-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+.legal-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
+.security-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  box-shadow: 0 0 8px var(--gold-bright);
+}
+
+.legal-id-code {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--gold-muted);
+}
+
+.legal-id-code strong {
+  color: var(--gold-bright);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.legal-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 580px) {
+  .legal-meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .full-width-item {
+    grid-column: 1 / -1;
+  }
+}
+
+.legal-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: rgba(3, 10, 7, 0.5);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.meta-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold-muted);
+}
+
+.meta-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.meta-value.bold-gold {
+  color: var(--gold-bright);
+  font-weight: 700;
+}
+
+.meta-value.bold-white {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--gold-bright);
+}
+
+/* Highlight Box for Ministry Approval */
+.highlight-box {
+  background: rgba(14, 38, 27, 0.85);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+}
+
+.accreditation-seal-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mini-seal-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.seal-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label-gold {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
+.meta-approval-num {
+  font-family: var(--font-arabic-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-top: 2px;
+}
+
+/* Legal Statements */
+.legal-statements-block {
+  margin-top: 18px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.statement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(8, 28, 20, 0.4);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.statement-bullet {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.statement-text {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.statement-text strong {
+  color: var(--gold-bright);
+}
+
+/* ==========================================================================
+   TIER 3: DIRECT CONTACT & CENTRAL ADMINISTRATION
+   ========================================================================== */
+.contact-cards-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-card {
+  background: var(--bg-card);
+  border: var(--edge-gold);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+}
+
+.contact-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.icon-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-bright);
+  flex-shrink: 0;
+}
+
+.icon-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contact-group-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.contact-group-sub {
+  font-size: 0.78rem;
+  color: var(--gold-muted);
+}
+
+/* Phones List */
+.phones-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phone-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(3, 10, 7, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  transition: all var(--transition-fast);
+}
+
+.phone-item:hover {
+  border-color: var(--gold-primary);
+  background: rgba(8, 28, 20, 0.7);
+}
+
+.phone-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-grow: 1;
+}
+
+.phone-type {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.phone-number {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+  letter-spacing: 0.04em;
+}
+
+.btn-copy-mini {
+  background: transparent;
+  border: none;
+  color: var(--gold-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.btn-copy-mini svg {
+  width: 17px;
+  height: 17px;
+}
+
+.btn-copy-mini:hover {
+  color: var(--gold-bright);
+  background: rgba(212, 175, 55, 0.2);
+}
+
+/* Email Card */
+.email-action-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(3, 10, 7, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.email-link {
+  text-decoration: none;
+  color: var(--gold-bright);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.btn-copy-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--gold-bright);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.btn-copy-text svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btn-copy-text:hover {
+  background: var(--gold-primary);
+  color: #030A07;
+}
+
+.btn-direct-email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  background: rgba(8, 28, 20, 0.8);
+  border: 1px solid var(--gold-primary);
+  border-radius: var(--radius-md);
+  color: var(--gold-bright);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-direct-email svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-direct-email:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(8, 28, 20, 0.9));
+  border-color: var(--gold-bright);
+  transform: translateY(-1px);
+}
+
+/* Headquarters Blocks */
+.headquarters-block {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hq-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--bg-card);
+  border: var(--edge-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.hq-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hq-icon-wrap svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hq-info {
+  flex-grow: 1;
+}
+
+.hq-type {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+  margin-bottom: 4px;
+}
+
+.hq-address {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   SOVEREIGN FOOTER
+   ========================================================================== */
+.sovereign-footer {
+  text-align: center;
+  padding: 24px 16px 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-divider-glow {
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+  margin-bottom: 12px;
+}
+
+.footer-seal-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-seal {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-country {
+  font-family: var(--font-arabic-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
+html[dir="ltr"] .footer-country {
+  font-family: var(--font-latin);
+  font-size: 0.84rem;
+}
+
+.footer-authority {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+}
+
+.footer-card-ref {
+  font-size: 0.76rem;
+  color: var(--gold-muted);
+}
+
+.footer-copyright {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION COMPONENT
+   ========================================================================== */
+.toast-notification {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 9999;
+  background: rgba(14, 38, 27, 0.96);
+  border: 1px solid var(--gold-primary);
+  border-radius: var(--radius-pill);
+  padding: 10px 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, visibility 0.35s;
+}
+
+.toast-notification.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast-icon {
+  width: 18px;
+  height: 18px;
+  color: #2ECC71;
+  flex-shrink: 0;
+}
+
+.toast-message {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .ambient-glow-mesh,
+  .top-nav-bar,
+  .primary-actions-section,
+  .btn-copy-mini,
+  .btn-copy-text,
+  .btn-direct-email {
+    display: none !important;
+  }
+  .hero-portrait-frame {
+    box-shadow: none !important;
+    border: 1px solid #000000 !important;
+  }
+}
